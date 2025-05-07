@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Recipe Finder</title>
+    <link rel="stylesheet" href="css/signup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="progress-steps">
+            <div class="step active" data-step="1">1. Account</div>
+            <div class="step" data-step="2">2. Profile</div>
+            <div class="step" data-step="3">3. Complete</div>
+        </div>
+        
+        <h2>Create Your Account</h2>
+        
+        <form id="signupForm" class="step-form">
+            <!-- Step 1: Account Info -->
+            <div class="form-step active" data-step="1">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Choose a username" required minlength="4">
+                    <div class="input-feedback">
+                        <i class="fas fa-check-circle valid-icon"></i>
+                        <i class="fas fa-exclamation-circle invalid-icon"></i>
+                        <i class="fas fa-spinner fa-spin checking-icon"></i>
+                        <small class="error-message"></small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Your email address" required>
+                    <div class="input-feedback">
+                        <i class="fas fa-check-circle valid-icon"></i>
+                        <i class="fas fa-exclamation-circle invalid-icon"></i>
+                        <i class="fas fa-spinner fa-spin checking-icon"></i>
+                        <small class="error-message"></small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a password" required minlength="8">
+                    <div class="password-strength">
+                        <div class="strength-meter">
+                            <span class="strength-bar"></span>
+                            <span class="strength-bar"></span>
+                            <span class="strength-bar"></span>
+                        </div>
+                        <small class="strength-text">Password Strength: <span>Weak</span></small>
+                    </div>
+                    <div class="input-feedback">
+                        <i class="fas fa-check-circle valid-icon"></i>
+                        <i class="fas fa-exclamation-circle invalid-icon"></i>
+                        <small class="error-message"></small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                    <div class="input-feedback">
+                        <i class="fas fa-check-circle valid-icon"></i>
+                        <i class="fas fa-exclamation-circle invalid-icon"></i>
+                        <small class="error-message"></small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="role">Account Type</label>
+                    <select id="role" required>
+                        <option value="" disabled selected>Select your role</option>
+                        <option value="user">Regular User</option>
+                        <option value="admin">Administrator</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-next" data-next="2">Next</button>
+                </div>
+            </div>
+            
+            <!-- Step 2: Profile Info -->
+            <div class="form-step" data-step="2">
+                <div class="avatar-selection">
+                    <h3>Choose Your Avatar</h3>
+                    <div class="avatar-options">
+                        <label class="avatar-option">
+                            <input type="radio" name="avatar" value="https://i.pinimg.com/736x/8c/6d/db/8c6ddb5fe6600fcc4b183cb2ee228eb7.jpg" checked>
+                            <img src="https://i.pinimg.com/736x/8c/6d/db/8c6ddb5fe6600fcc4b183cb2ee228eb7.jpg" alt="Avatar 1">
+                        </label>
+                        <label class="avatar-option">
+                            <input type="radio" name="avatar" value="https://i.pinimg.com/736x/68/4c/b6/684cb636cf67568ed031a5fee627c8a5.jpg">
+                            <img src="https://i.pinimg.com/736x/68/4c/b6/684cb636cf67568ed031a5fee627c8a5.jpg" alt="Avatar 2">
+                        </label>
+                        <label class="avatar-option">
+                            <input type="radio" name="avatar" value="https://i.pinimg.com/736x/1d/36/03/1d36037951e66042f1b379a84b07a6c3.jpg">
+                            <img src="https://i.pinimg.com/736x/1d/36/03/1d36037951e66042f1b379a84b07a6c3.jpg" alt="Avatar 3">
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="Where are you from?">
+                </div>
+                
+                <div class="form-group">
+                    <label for="bio">About You</label>
+                    <textarea id="bio" placeholder="Tell us about yourself"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cuisines">Favorite Cuisines</label>
+                    <select id="cuisines" multiple>
+                        <option value="italian">Italian</option>
+                        <option value="mexican">Mexican</option>
+                        <option value="indian">Indian</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="japanese">Japanese</option>
+                        <option value="french">French</option>
+                        <option value="thai">Thai</option>
+                        <option value="american">American</option>
+                    </select>
+                    <small class="hint">Hold Ctrl/Cmd to select multiple</small>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-prev" data-prev="1">Back</button>
+                    <button type="button" class="btn btn-next" data-next="3">Next</button>
+                </div>
+            </div>
+            
+            <!-- Step 3: Review & Complete -->
+            <div class="form-step" data-step="3">
+                <div class="review-section">
+                    <h3>Review Your Information</h3>
+                    
+                    <div class="review-item">
+                        <span class="review-label">Username:</span>
+                        <span id="review-username"></span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Email:</span>
+                        <span id="review-email"></span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Account Type:</span>
+                        <span id="review-role"></span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Avatar:</span>
+                        <img id="review-avatar" src="" alt="Selected Avatar" class="review-avatar">
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Location:</span>
+                        <span id="review-location"></span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">About You:</span>
+                        <span id="review-bio"></span>
+                    </div>
+                    <div class="review-item">
+                        <span class="review-label">Favorite Cuisines:</span>
+                        <span id="review-cuisines"></span>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-prev" data-prev="2">Back</button>
+                    <button type="submit" class="btn btn-submit">
+                        <span class="btn-text">Complete Sign Up</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        
+        <div class="login-link">
+            Already have an account? <a href="login.html">Log In</a>
+        </div>
+    </div>
+
+    <script src="javascript/auth.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Form navigation
+        const formSteps = document.querySelectorAll('.form-step');
+        const progressSteps = document.querySelectorAll('.progress-steps .step');
+
+        function goToStep(stepNumber) {
+            formSteps.forEach(step => {
+                step.classList.toggle('active', step.dataset.step === stepNumber);
+            });
+
+            progressSteps.forEach(step => {
+                step.classList.toggle('active', parseInt(step.dataset.step) <= parseInt(stepNumber));
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+        document.querySelectorAll('.btn-next').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const currentStep = document.querySelector('.form-step.active').dataset.step;
+                const nextStep = this.dataset.next;
+
+                if (currentStep === '1' && !validateStep1()) return;
+                if (currentStep === '2' && !validateStep2()) return;
+
+                goToStep(nextStep);
+
+                if (nextStep === '3') {
+                    updateReviewSection();
+                }
+            });
+        });
+
+        document.querySelectorAll('.btn-prev').forEach(btn => {
+            btn.addEventListener('click', function() {
+                goToStep(this.dataset.prev);
+            });
+        });
+
+        // Password strength indicator
+        const passwordInput = document.getElementById('password');
+        const strengthBars = document.querySelectorAll('.strength-bar');
+        const strengthText = document.querySelector('.strength-text span');
+
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            let strength = 0;
+
+            if (password.length >= 8) strength++;
+            if (password.length >= 12) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+            strength = Math.min(strength, 3);
+
+            strengthBars.forEach((bar, index) => {
+                bar.style.backgroundColor = index < strength ?
+                    (strength === 1 ? '#e74c3c' : strength === 2 ? '#f39c12' : '#2ecc71') :
+                    '#ecf0f1';
+            });
+
+            strengthText.textContent =
+                strength === 0 ? 'Weak' :
+                strength === 1 ? 'Fair' :
+                strength === 2 ? 'Good' : 'Strong';
+
+            strengthText.style.color =
+                strength === 0 ? '#e74c3c' :
+                strength === 1 ? '#f39c12' :
+                strength === 2 ? '#3498db' : '#2ecc71';
+        });
+
+        document.getElementById('username').addEventListener('input', function () {
+            const username = this.value.trim();
+
+            const users = JSON.parse(localStorage.getItem('recipeAppUsers')) || [];
+            const isTaken = users.some(u => u.username === username);
+
+            if (username.length < 4) {
+                showError('username', 'Username must be at least 4 characters');
+            } else if (isTaken) {
+                showError('username', 'Username already taken');
+            } else {
+                showSuccess('username');
+            }
+        });
+
+
+        // Email availability check 
+        document.getElementById('email').addEventListener('input', function () {
+            const email = this.value.trim();
+
+            const users = JSON.parse(localStorage.getItem('recipeAppUsers')) || [];
+            const isTaken = users.some(u => u.email === email);
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showError('email', 'Please enter a valid email');
+            } else if (isTaken) {
+                showError('email', 'Email already registered');
+            } else {
+                showSuccess('email');
+            }
+        });
+
+
+        // Form validation
+        function validateStep1() {
+            let isValid = true;
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const role = document.getElementById('role').value;
+
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+
+            if (username.length < 4) {
+                showError('username', 'Username must be at least 4 characters');
+                isValid = false;
+            } else if (document.getElementById('username').parentElement.classList.contains('error')) {
+                showError('username', 'Username already taken');
+                isValid = false;
+            } else {
+                showSuccess('username');
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showError('email', 'Please enter a valid email');
+                isValid = false;
+            } else if (document.getElementById('email').parentElement.classList.contains('error')) {
+                showError('email', 'Email already registered');
+                isValid = false;
+            } else {
+                showSuccess('email');
+            }
+
+            if (password.length < 8) {
+                showError('password', 'Password must be at least 8 characters');
+                isValid = false;
+            } else {
+                showSuccess('password');
+            }
+
+            if (password !== confirmPassword) {
+                showError('confirmPassword', 'Passwords do not match');
+                isValid = false;
+            } else if (confirmPassword) {
+                showSuccess('confirmPassword');
+            }
+
+            if (!role) {
+                alert('Please select an account type');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function validateStep2() {
+            return true;
+        }
+
+        function showError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const feedback = field.parentElement.querySelector('.input-feedback');
+            const errorElement = feedback.querySelector('.error-message');
+
+            field.parentElement.classList.add('error');
+            field.parentElement.classList.remove('success');
+            feedback.querySelector('.valid-icon').style.display = 'none';
+            feedback.querySelector('.invalid-icon').style.display = 'inline-block';
+            errorElement.textContent = message;
+        }
+
+        function showSuccess(fieldId) {
+            const field = document.getElementById(fieldId);
+            const feedback = field.parentElement.querySelector('.input-feedback');
+
+            field.parentElement.classList.remove('error');
+            field.parentElement.classList.add('success');
+            feedback.querySelector('.valid-icon').style.display = 'inline-block';
+            feedback.querySelector('.invalid-icon').style.display = 'none';
+            feedback.querySelector('.error-message').textContent = '';
+        }
+
+        function updateReviewSection() {
+            document.getElementById('review-username').textContent = document.getElementById('username').value;
+            document.getElementById('review-email').textContent = document.getElementById('email').value;
+            document.getElementById('review-role').textContent =
+                document.getElementById('role').value === 'admin' ? 'Administrator' : 'Regular User';
+
+            const selectedAvatar = document.querySelector('input[name="avatar"]:checked').value;
+            document.getElementById('review-avatar').src = selectedAvatar;
+
+            document.getElementById('review-location').textContent =
+                document.getElementById('location').value || 'Not specified';
+            document.getElementById('review-bio').textContent =
+                document.getElementById('bio').value || 'Not specified';
+
+            const selectedCuisines = Array.from(document.getElementById('cuisines').selectedOptions)
+                .map(option => option.text);
+            document.getElementById('review-cuisines').textContent =
+                selectedCuisines.length ? selectedCuisines.join(', ') : 'Not specified';
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            if (!validateStep1()) {
+                goToStep('1');
+                return;
+            }
+
+            const submitBtn = document.querySelector('.btn-submit');
+            submitBtn.disabled = true;
+            submitBtn.querySelector('.btn-text').textContent = 'Creating Account...';
+
+            try {
+                const userData = {
+                    username: document.getElementById('username').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    password: document.getElementById('password').value,
+                    role: document.getElementById('role').value,
+                    avatar: document.querySelector('input[name="avatar"]:checked').value,
+                    location: document.getElementById('location').value.trim(),
+                    bio: document.getElementById('bio').value.trim(),
+                    cuisineSpecialty: Array.from(document.getElementById('cuisines').selectedOptions)
+                        .map(option => option.value)
+                };
+
+                const user = registerUser(
+                    userData.username,
+                    userData.email,
+                    userData.password,
+                    userData.role
+                );
+
+                user.location = userData.location;
+                user.bio = userData.bio;
+                user.cuisineSpecialty = userData.cuisineSpecialty;
+                user.avatar = userData.avatar;
+                updateUser(user);
+                setCurrentUser(user);
+
+
+                setTimeout(() => {
+                    window.location.href = user.isAdmin ? 'adminDashboard.html' : 'dashboard.html';
+                }, 1500);
+
+            } catch (error) {
+                alert(`Registration failed: ${error.message}`);
+                submitBtn.disabled = false;
+                submitBtn.querySelector('.btn-text').textContent = 'Complete Sign Up';
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>

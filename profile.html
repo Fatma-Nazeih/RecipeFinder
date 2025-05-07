@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile | Recipe Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile_css.css">
+    <link rel="stylesheet" href="css/navigation_bar.css">
+
+    <script src="javascript/auth.js"></script>
+    <script src="javascript/navigation.js"></script>
+   
+</head>
+<body>
+    <div class="navigation">
+        <h2 class="menu-title">Recipe Finder</h2>
+        <ul class="menu-list">
+            <li><a href="profile.html" class="menu-link button-link">Profile</a></li>
+            <li><a href="search.html" class="menu-link button-link">Search</a></li>
+            <li><a href="favouriteRecipe.html" class="menu-link button-link">Your Favourites</a></li>
+            <li><a href="dashboard.html" class="menu-link button-link">Dashboard</a></li>
+            <li><a href="adminDashboard.html" class="menu-link button-link">Admin Dashboard</a></li>
+            <li><a href="#" class="menu-link button-link logout-link">Logout</a></li>
+        </ul>
+    </div>
+
+
+    <div class="profile-container">
+        <aside class="profile-sidebar">
+            <div class="profile-picture">
+                <img src="" alt="User Avatar" id="profile-img">
+                <a href="#edit-picture" class="edit-btn">
+                    <i class="fas fa-camera"></i>
+                </a>
+                
+                <div class="edit-modal" id="edit-picture">
+                    <div class="modal-content">
+                        <h3>Change Profile Picture</h3>
+                        <div class="image-options">
+                            <label class="avatar-option">
+                                <input type="radio" name="avatar" value="https://i.pinimg.com/736x/8c/6d/db/8c6ddb5fe6600fcc4b183cb2ee228eb7.jpg">
+                                <img src="https://i.pinimg.com/736x/8c/6d/db/8c6ddb5fe6600fcc4b183cb2ee228eb7.jpg" alt="Avatar 1">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                            </label>
+                            <label class="avatar-option">
+                                <input type="radio" name="avatar" value="https://i.pinimg.com/736x/68/4c/b6/684cb636cf67568ed031a5fee627c8a5.jpg">
+                                <img src="https://i.pinimg.com/736x/68/4c/b6/684cb636cf67568ed031a5fee627c8a5.jpg" alt="Avatar 2">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                            </label>
+                            <label class="avatar-option">
+                                <input type="radio" name="avatar" value="https://i.pinimg.com/736x/1d/36/03/1d36037951e66042f1b379a84b07a6c3.jpg">
+                                <img src="https://i.pinimg.com/736x/1d/36/03/1d36037951e66042f1b379a84b07a6c3.jpg" alt="Avatar 3">
+                                <span class="checkmark"><i class="fas fa-check"></i></span>
+                            </label>
+                        </div>
+                        <div class="modal-actions">
+                            <a href="#profile-view" class="btn btn-secondary">Cancel</a>
+                            <button type="button" class="btn btn-primary" id="saveAvatarBtn">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 id="profile-name"></h2>
+            <p class="username" id="profile-username"></p>
+            
+            <div class="verification-badge" id="verificationBadge">
+                <i class="fas fa-check-circle"></i> Verified Account
+            </div>
+           <br/><br/><br/><br/><br/>
+            
+            <nav class="profile-menu">
+                <a href="#profile-view" class="active"><i class="fas fa-user-circle"></i> My Profile</a>
+                <a href="#edit-profile"><i class="fas fa-edit"></i> Edit Profile</a>
+                <a href="#security"><i class="fas fa-shield-alt"></i> Security</a>
+            </nav>
+        </aside>
+        
+        <main class="profile-content">
+            <section id="profile-view" class="profile-section active-section">
+                <div class="section-header">
+                    <h3>About Me</h3>
+                    <a href="#edit-profile" class="edit-link"><i class="fas fa-edit"></i> Edit</a>
+                </div>
+                
+                <p class="about-me" id="about-me-text"></p>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-envelope"></i> Email</span>
+                        <span class="info-value" id="email-value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-calendar-alt"></i> Joined</span>
+                        <span class="info-value" id="joined-value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-map-marker-alt"></i> Location</span>
+                        <span class="info-value" id="location-value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-utensils"></i> Favorite Cuisines</span>
+                        <span class="info-value" id="cuisine-value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-sign-in-alt"></i> Last Login</span>
+                        <span class="info-value" id="lastlogin-value"></span>
+                    </div>
+                </div>
+                <br/><br/>
+                
+                <div class="section-header">
+                    <h3>My Interests</h3>
+                </div>
+                <div class="interests-container" id="interests-container">
+                    <!-- Interests will be loaded here -->
+                </div>
+                <br/><br/>
+                
+                <div class="section-header">
+                    <h3>Recent Activity</h3>
+                </div>
+                
+                <div class="activity-feed" id="activity-feed">
+                    <div class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="" alt="User" id="activity-avatar">
+                        </div>
+                        <div class="activity-content">
+                            <p><strong id="activity-username">You</strong> joined Recipe Finder</p>
+                            <small class="activity-time" id="join-time"></small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="edit-profile" class="profile-section">
+                <div class="edit-form-container">
+                    <h3>Edit Profile</h3>
+                    
+                    <form class="edit-form" id="profileForm">
+                        <div class="form-group">
+                            <label for="edit-name">Full Name</label>
+                            <input type="text" id="edit-name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-about">About Me</label>
+                            <textarea id="edit-about" rows="6"></textarea>
+                            <small class="form-hint">Tell others about yourself, your cooking experience, and what you love about food</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-location">Location</label>
+                            <input type="text" id="edit-location">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-cuisine">Favorite Cuisines</label>
+                            <select id="edit-cuisine" multiple>
+                                <option value="italian">Italian</option>
+                                <option value="mexican">Mexican</option>
+                                <option value="indian">Indian</option>
+                                <option value="chinese">Chinese</option>
+                                <option value="japanese">Japanese</option>
+                                <option value="french">French</option>
+                                <option value="thai">Thai</option>
+                                <option value="american">American</option>
+                                <option value="mediterranean">Mediterranean</option>
+                                <option value="middle-eastern">Middle Eastern</option>
+                            </select>
+                            <small class="form-hint">Hold Ctrl/Cmd to select multiple</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-interests">Interests (comma separated)</label>
+                            <input type="text" id="edit-interests" placeholder="e.g., Baking, Grilling, Vegan Cooking">
+                        </div>
+                        
+                        <div class="form-actions">
+                            <a href="#profile-view" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            
+            <section id="security" class="profile-section">
+                <div class="security-container">
+                    <h3>Security Settings</h3>
+                    
+                    <div class="security-card">
+                        <div class="security-header">
+                            <i class="fas fa-key"></i>
+                            <h4>Change Password</h4>
+                        </div>
+                        <form id="changePasswordForm">
+                            <div class="form-group">
+                                <label for="current-password">Current Password</label>
+                                <input type="password" id="current-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" required minlength="8">
+                                <div class="password-strength">
+                                    <div class="strength-meter">
+                                        <span class="strength-bar"></span>
+                                        <span class="strength-bar"></span>
+                                        <span class="strength-bar"></span>
+                                    </div>
+                                    <small class="strength-text">Password Strength: <span>Weak</span></small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-new-password">Confirm New Password</label>
+                                <input type="password" id="confirm-new-password" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="security-card danger-zone">
+                        <div class="security-header">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h4>Danger Zone</h4>
+                        </div>
+                        <div class="security-content">
+                            <p>Deleting your account will remove all your data permanently.</p>
+                            <button class="btn btn-danger" id="deleteAccountBtn">Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="javascript/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = getCurrentUser();
+            
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Load profile data
+            loadProfileData(currentUser);
+            
+            // Initialize sections
+            setupSectionNavigation();
+            
+            // Setup form submissions
+            setupProfileForm();
+            setupPasswordForm();
+            
+            // Setup other event listeners
+            document.getElementById('saveAvatarBtn').addEventListener('click', saveAvatar);
+            document.getElementById('deleteAccountBtn').addEventListener('click', confirmAccountDeletion);
+            
+            // Password strength indicator
+            document.getElementById('new-password').addEventListener('input', updatePasswordStrength);
+            
+            function loadProfileData(user) {
+                // Basic info
+                document.getElementById('profile-name').textContent = user.name || user.username;
+                document.getElementById('profile-username').textContent = `@${user.username}`;
+                document.getElementById('profile-img').src = user.avatar || 'https://i.pinimg.com/736x/8c/6d/db/8c6ddb5fe6600fcc4b183cb2ee228eb7.jpg';
+                document.getElementById('activity-avatar').src = user.avatar || 'https://i.pinimg.com/736x/8c/6d/db/8c6ddb5fe6600fcc4b183cb2ee228eb7.jpg';
+                document.getElementById('activity-username').textContent = user.name || 'You';
+                
+                // About section
+                document.getElementById('about-me-text').textContent = user.bio || 'No bio yet. Tell us about yourself and your cooking journey!';
+                document.getElementById('email-value').textContent = user.email;
+                document.getElementById('joined-value').textContent = 
+                    new Date(user.joinDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+                document.getElementById('location-value').textContent = user.location || 'Not specified';
+                document.getElementById('cuisine-value').textContent = 
+                    user.cuisineSpecialty?.join(', ') || 'Not specified';
+                document.getElementById('lastlogin-value').textContent = 
+                    user.lastLogin ? new Date(user.lastLogin).toLocaleString() : 'First login';
+                document.getElementById('join-time').textContent = 
+                    `on ${new Date(user.joinDate).toLocaleDateString()}`;
+                
+                // Verification badge
+                document.getElementById('verificationBadge').style.display = 
+                    user.isVerified ? 'flex' : 'none';
+                
+               
+                // Interests
+                const interestsContainer = document.getElementById('interests-container');
+                interestsContainer.innerHTML = '';
+                if (user.interests && user.interests.length > 0) {
+                    user.interests.forEach(interest => {
+                        const tag = document.createElement('div');
+                        tag.className = 'interest-tag';
+                        tag.innerHTML = `<i class="fas fa-tag"></i> ${interest}`;
+                        interestsContainer.appendChild(tag);
+                    });
+                } else {
+                    interestsContainer.innerHTML = '<p>No interests added yet</p>';
+                }
+                
+                // Edit form values
+                document.getElementById('edit-name').value = user.name || '';
+                document.getElementById('edit-about').value = user.bio || '';
+                document.getElementById('edit-location').value = user.location || '';
+                document.getElementById('edit-interests').value = user.interests?.join(', ') || '';
+                
+                // Set selected cuisines
+                if (user.cuisineSpecialty) {
+                    const cuisineSelect = document.getElementById('edit-cuisine');
+                    Array.from(cuisineSelect.options).forEach(option => {
+                        option.selected = user.cuisineSpecialty.includes(option.value);
+                    });
+                }
+                
+                // Set selected avatar
+                if (user.avatar) {
+                    const avatarRadio = document.querySelector(`input[name="avatar"][value="${user.avatar}"]`);
+                    if (avatarRadio) {
+                        avatarRadio.checked = true;
+                    }
+                }
+            }
+            
+            function setupSectionNavigation() {
+                // Show section based on hash
+                function showSection() {
+                    const hash = window.location.hash || '#profile-view';
+                    document.querySelectorAll('.profile-section').forEach(section => {
+                        section.classList.toggle('active-section', section.id === hash.substring(1));
+                    });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.profile-menu a').forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === hash);
+                    });
+                }
+                
+                // Initial show
+                showSection();
+                
+                // Hash change listener
+                window.addEventListener('hashchange', showSection);
+            }
+            
+            function setupProfileForm() {
+                const form = document.getElementById('profileForm');
+                
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const updatedData = {
+                        name: document.getElementById('edit-name').value,
+                        bio: document.getElementById('edit-about').value,
+                        location: document.getElementById('edit-location').value,
+                        cuisineSpecialty: Array.from(document.getElementById('edit-cuisine').selectedOptions)
+                            .map(option => option.value),
+                        interests: document.getElementById('edit-interests').value
+                            .split(',')
+                            .map(item => item.trim())
+                            .filter(item => item.length > 0)
+                    };
+                    
+                    const user = getCurrentUser();
+                    Object.assign(user, updatedData);
+                    
+                    if (updateUser(user)) {
+                        loadProfileData(user);
+                        window.location.hash = '#profile-view';
+                        showToast('Profile updated successfully');
+                    } else {
+                        showToast('Failed to update profile', 'error');
+                    }
+                });
+            }
+            
+            function setupPasswordForm() {
+                const form = document.getElementById('changePasswordForm');
+                
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const currentPassword = document.getElementById('current-password').value;
+                    const newPassword = document.getElementById('new-password').value;
+                    const confirmPassword = document.getElementById('confirm-new-password').value;
+                    
+                    // Validate
+                    if (newPassword !== confirmPassword) {
+                        showToast('Passwords do not match', 'error');
+                        return;
+                    }
+                    
+                    if (newPassword.length < 8) {
+                        showToast('Password must be at least 8 characters', 'error');
+                        return;
+                    }
+                    
+                    // Verify current password
+                    if (hashPassword(currentPassword) !== getCurrentUser().password) {
+                        showToast('Current password is incorrect', 'error');
+                        return;
+                    }
+                    
+                    // Update password
+                    const user = getCurrentUser();
+                    user.password = hashPassword(newPassword);
+                    if (updateUser(user)) {
+                        showToast('Password updated successfully');
+                        form.reset();
+                    } else {
+                        showToast('Failed to update password', 'error');
+                    }
+                });
+            }
+            
+            function saveAvatar() {
+                const selectedAvatar = document.querySelector('input[name="avatar"]:checked')?.value;
+                if (!selectedAvatar) {
+                    showToast('Please select an avatar', 'error');
+                    return;
+                }
+                
+                const user = getCurrentUser();
+                user.avatar = selectedAvatar;
+                
+                if (updateUser(user)) {
+                    document.getElementById('profile-img').src = selectedAvatar;
+                    document.getElementById('activity-avatar').src = selectedAvatar;
+                    window.location.hash = '#profile-view';
+                    showToast('Avatar updated successfully');
+                } else {
+                    showToast('Failed to update avatar', 'error');
+                }
+            }
+            
+            function confirmAccountDeletion() {
+                if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                    const users = JSON.parse(localStorage.getItem('recipeAppUsers')) || [];
+                    const updatedUsers = users.filter(u => u.id !== getCurrentUser().id);
+                    
+                    localStorage.setItem('recipeAppUsers', JSON.stringify(updatedUsers));
+                    localStorage.removeItem('recipeAppCurrentUser');
+                    
+                    window.location.href = 'login.html';
+                }
+            }
+            
+            function updatePasswordStrength() {
+                const password = this.value;
+                let strength = 0;
+                
+                // Length check
+                if (password.length >= 8) strength++;
+                if (password.length >= 12) strength++;
+                
+                // Complexity checks
+                if (/[A-Z]/.test(password)) strength++;
+                if (/[0-9]/.test(password)) strength++;
+                if (/[^A-Za-z0-9]/.test(password)) strength++;
+                
+                // Cap at 3 for our UI
+                strength = Math.min(strength, 3);
+                
+                // Update UI
+                const bars = document.querySelectorAll('.strength-bar');
+                const text = document.querySelector('.strength-text span');
+                
+                bars.forEach((bar, index) => {
+                    bar.style.backgroundColor = index < strength ? 
+                        (strength === 1 ? '#e74c3c' : strength === 2 ? '#f39c12' : '#2ecc71') : 
+                        '#ecf0f1';
+                });
+                
+                text.textContent = 
+                    strength === 0 ? 'Weak' : 
+                    strength === 1 ? 'Fair' : 
+                    strength === 2 ? 'Good' : 'Strong';
+                text.style.color = 
+                    strength === 0 ? '#e74c3c' : 
+                    strength === 1 ? '#f39c12' : 
+                    strength === 2 ? '#3498db' : '#2ecc71';
+            }
+            
+            function showToast(message, type = 'success') {
+                const toast = document.createElement('div');
+                toast.className = `toast toast-${type}`;
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.classList.add('show');
+                }, 10);
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(toast);
+                    }, 300);
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

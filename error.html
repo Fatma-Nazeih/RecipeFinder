@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Recipe App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/error_css.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<script src="javascript/auth.js"></script>
+<script src="javascript/navigation.js"></script>
+<link rel="stylesheet" href="css/navigation_bar.css">
+
+</head>
+<body>
+    <div class="navigation">
+        <h2 class="menu-title">Recipe Finder</h2>
+        <ul class="menu-list">
+            <!-- These will always be shown for logged-in users -->
+            <li><a href="profile.html" class="menu-link button-link" style="display: none;">Profile</a></li>
+            <li><a href="search.html" class="menu-link button-link" style="display: none;">Search</a></li>
+            <li><a href="favouriteRecipe.html" class="menu-link button-link" style="display: none;">Your Favourites</a></li>
+            
+            <!-- These will be shown based on role -->
+            <li><a href="dashborad.html" class="menu-link button-link" style="display: none;">Dashboard</a></li>
+            <li><a href="adminDashboard.html" class="menu-link button-link" style="display: none;">Admin Dashboard</a></li>
+        </ul>
+    </div>
+    
+    <div class="error-container">
+        <div class="error-content">
+            <h1>404</h1>
+            <h2>Oops! </h2>
+            <p>The page you're looking for doesn't exist or has been moved.</p>
+            <div class="error-actions">
+                <a href="dashboard.html" class="btn-primary">Go to Homepage</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Search - Recipe Finder</title>
+
+    <link rel="stylesheet" href="css/dash-search.css">
+<link rel="stylesheet" href="css\navigation_bar.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<script src="javascript/auth.js"></script>
+<script src="javascript/navigation.js"></script>
+
+
+</head>
+<body>
+    <div class="navigation">
+        <h2 class="menu-title">Recipe Finder</h2>
+        <ul class="menu-list">
+            <li><a href="profile.html" class="menu-link button-link">Profile</a></li>
+            <li><a href="search.html" class="menu-link button-link">Search</a></li>
+            <li><a href="favouriteRecipe.html" class="menu-link button-link">Your Favourites</a></li>
+            <li><a href="dashboard.html" class="menu-link button-link">Dashboard</a></li>
+            <li><a href="adminDashboard.html" class="menu-link button-link">Admin Dashboard</a></li>
+            <li><a href="#" class="menu-link button-link logout-link">Logout</a></li>
+        </ul>
+    </div>
+    <section class="search-container">
+        <div class="search">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search Recipes..." id="search-input">
+        </div>
+    </section>
+    <h2 class="head">Discover Amazing Recipes</h2>
+    
+    <h2 class="text" id="result-for"></h2>
+    <h3 class="text" id="result-count"></h3>
+
+    <section class="recipes" id="recipes-container">
+        <!-- recipe cards -->
+    </section>
+    <div>
+        <i class="fas fa-arrow-up" id="scroll"></i>
+    </div>
+    <script src="javascript/search.js" ></script>
+
+
+</body>
+
+</html>

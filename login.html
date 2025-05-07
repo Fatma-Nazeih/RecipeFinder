@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | Recipe Finder</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Welcome Back</h2>
+            <p>Log in to your Recipe Finder account</p>
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginInput">Email or Username</label>
+                <input type="text" id="loginInput" placeholder="Enter your email or username" required>
+                <div class="input-feedback">
+                    <i class="fas fa-check-circle valid-icon"></i>
+                    <i class="fas fa-exclamation-circle invalid-icon"></i>
+                    <small class="error-message"></small>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                <div class="input-feedback">
+                    <i class="fas fa-check-circle valid-icon"></i>
+                    <i class="fas fa-exclamation-circle invalid-icon"></i>
+                    <small class="error-message"></small>
+                </div>
+            </div>
+            
+            <div class="form-options">
+                <div class="remember-me-container">
+                  <input type="checkbox" id="rememberMe">
+                  <label for="rememberMe">Remember me</label>
+                </div>
+                <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+            </div>
+              
+              
+            
+            <button type="submit" class="btn btn-login">
+                <span class="btn-text">Log In</span>
+            </button>
+            
+            <div class="login-footer">
+                Don't have an account? <a href="signup.html">Sign up</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="javascript/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const loginBtn = document.querySelector('.btn-login');
+            
+            // Check for remembered credentials
+            if (localStorage.getItem('rememberedEmail')) {
+                document.getElementById('loginInput').value = localStorage.getItem('rememberedEmail');
+                document.getElementById('rememberMe').checked = true;
+            }
+            
+            loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const identifier = document.getElementById('loginInput').value.trim();
+                const password = document.getElementById('loginPassword').value;
+                const rememberMe = document.getElementById('rememberMe').checked;
+                
+                // Show loading state
+                loginBtn.disabled = true;
+                loginBtn.querySelector('.btn-text').textContent = 'Logging In...';
+                
+                try {
+                    const user = await loginUser(identifier, password);
+                    
+                    // Remember email if requested
+                    if (rememberMe) {
+                        localStorage.setItem('rememberedEmail', user.email);
+                    } else {
+                        localStorage.removeItem('rememberedEmail');
+                    }
+                    
+                    setTimeout(() => {
+                    window.location.href = user.isAdmin ? 'adminDashboard.html' : 'dashboard.html';
+                    }, 1500);
+                    
+                } catch (error) {
+                    document.querySelector('.error-message').textContent = error.message;
+                    loginBtn.disabled = false;
+                    loginBtn.querySelector('.btn-text').textContent = 'Log In';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

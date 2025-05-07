@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Recipe App</title>
+
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation_bar.css">
+
+    <!-- JavaScript Files -->
+    <script src="javascript/auth.js"></script>
+    <script src="javascript/navigation.js"></script>
+</head>
+<body>
+    <div class="navigation">
+        <h2 class="menu-title">Recipe Finder</h2>
+        <ul class="menu-list">
+            <li><a href="profile.html" class="menu-link button-link">Profile</a></li>
+            <li><a href="search.html" class="menu-link button-link">Search</a></li>
+            <li><a href="favouriteRecipe.html" class="menu-link button-link">Your Favourites</a></li>
+            <li><a href="dashboard.html" class="menu-link button-link">Dashboard</a></li>
+            <li><a href="adminDashboard.html" class="menu-link button-link">Admin Dashboard</a></li>
+            <li><a href="#" class="menu-link button-link logout-link">Logout</a></li>
+        </ul>
+    </div>
+    <!-- Main Container for Admin Dashboard -->
+    <div class="admin-container">
+        <!-- Sidebar Section -->
+        <aside class="admin-sidebar">
+            <div class="logo">RecipeFinder</div>
+            <nav>
+                <ul>
+                    <li><a href="adminDashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="edit-recipe.html"><i class="fas fa-utensils"></i> Manage Recipes</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Section -->
+        <main class="admin-content">
+            <!-- Header Section -->
+            <header class="admin-header">
+                <h1>Admin Dashboard</h1>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search recipes...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </header>
+
+            <!-- Statistics Section -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Recipes</h3>
+                        <p class="total-recipes-count">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Popular Recipe</h3>
+                        <p>Chicken Alfredo</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Recipes Section -->
+            <section class="recipes-section">
+                <div class="section-header">
+                    <h2>Recent Recipes</h2>
+                    <a href="edit-recipe.html" class="add-btn"><i class="fas fa-plus"></i> Add Recipe</a>
+                </div>
+                <div class="recipes-grid">
+                    <!-- Recipes will be dynamically added here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Main JavaScript File -->
+    <script src="javascript/script.js"></script>
+</body>
+</html>
